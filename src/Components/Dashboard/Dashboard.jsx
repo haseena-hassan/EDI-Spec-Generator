@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Card from './Card'
-import Chatbox from '../Chatbot/Chatbox'
+import Chatbox from '../Chatbox/Chatbox'
 
 import im1 from '../../Assets/images/edi-card.jpg'
 import im2 from '../../Assets/images/reports-card.jpg'
@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
                         </Row>
                     </Col>
                     <Col lg="5" style={{paddingLeft: "130px"}} >
-                    <Chatbox />
+                        <Chatbox />
                     </Col>
                 </Row>
                 
