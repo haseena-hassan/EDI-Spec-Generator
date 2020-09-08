@@ -22,6 +22,19 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     
+    <script>
+      window.watsonAssistantChatOptions = {
+          integrationID: "03670c87-4706-43cf-9e4e-ba652d19fefc", // The ID of this integration.
+          region: "eu-de", // The region your integration is hosted in.
+          serviceInstanceID: "c22c25c6-598c-44d0-9023-5f3d060cdac7", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+        document.head.appendChild(t);
+      });
+    </script>
 
     <script type="text/javascript" src="js/materialize.min.js"></script>
   </body>

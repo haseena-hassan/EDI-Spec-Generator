@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route , Switch } from "react-router-dom"
+import PublicRoute from "./Route/Publicroute";
 
 import Topnav from './Components/Layout/Topnav'
 import Dashboard from './Components/Dashboard/Dashboard'
@@ -17,11 +18,11 @@ class App extends React.Component {
       <Router>
         <div className="App">
           <Topnav/>
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/create-spec" component={CreateSpec} />
-          <Route exact path="/create-edi" component={CreateEDI} />
-          <Route exact path="/search" component={Search} />
-          <Route exact path="/reports" component={Reports} />
+          <PublicRoute exact path="/" component={Dashboard} />
+          <PublicRoute path="/create-spec" component={CreateSpec} />
+          <PublicRoute path="/create-edi" component={CreateEDI} />
+          <PublicRoute path="/search" component={Search} />
+          <PublicRoute path="/reports" component={Reports} />
         </div>
       </Router>
     );
