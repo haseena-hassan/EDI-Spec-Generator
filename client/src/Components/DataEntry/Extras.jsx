@@ -8,71 +8,73 @@ import Table from 'react-bootstrap/Table'
 
 
 
-class Version extends Component {
+class Extras extends Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Col lg="3">
-                        <Form>
+                <Form>
+                    <Row>
+                        <Col lg="1"></Col>
+                        <Col lg="3">
+                            <h4 style={{float:"left"}}>Buisiness Partner</h4>
+                        </Col>
+                        <Col lg="4">
                             <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
-                                <Form.Control type="text" placeholder="Search" />
+                                <Form.Control type="text" placeholder="Buisiness partner name *" />
                             </Form.Group>
-                        </Form>
-                    </Col>
-                    <Col lg="9">
-                        <Pagination  style={{float:"right"}}>
-                            <Pagination.First />
-                            <Pagination.Prev />
-                            <Pagination.Item>{1}</Pagination.Item>
-                            <Pagination.Ellipsis />
-
-                            <Pagination.Item>{10}</Pagination.Item>
-                            <Pagination.Item>{11}</Pagination.Item>
-                            <Pagination.Item>{12}</Pagination.Item>
-                            <Pagination.Item>{13}</Pagination.Item>
-                            <Pagination.Item>{14}</Pagination.Item>
-
-                            <Pagination.Ellipsis />
-                            <Pagination.Item>{20}</Pagination.Item>
-                            <Pagination.Next />
-                            <Pagination.Last />
-                        </Pagination>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Table bordered  hover>
-                            <thead>
-                                <tr>
-                                <th>#</th>
-                                <th>Version</th>
-                                <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                </tr>
-                                <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                </tr>
-                                <tr>
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
+                    <Row>
+                    <Col lg="1"></Col>
+                        <Col lg="3">
+                            <h4 style={{float:"left"}}>Header</h4>
+                        </Col>
+                        <Col lg="4">
+                            <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
+                                <Form.Control type="text" placeholder="Header text" />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg="1"></Col>
+                        <Col lg="3">
+                            <h4 style={{float:"left"}}>Footer</h4>
+                        </Col>
+                        <Col lg="4">
+                            <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
+                                <Form.Control type="text" placeholder="Footer text" />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg="1"></Col>
+                        <Col lg="2">
+                            <h4 style={{float:"left"}}>Segment</h4>
+                        </Col>
+                        <Col lg="2">
+                            <p>SEG 1</p>
+                        </Col>
+                        <Col lg="4">
+                            <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
+                                <Form.Control type="text" placeholder="Segment text" />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg="3"></Col>
+                        <Col lg="2">
+                            <p>SEG 1</p>
+                        </Col>
+                        <Col lg="4">
+                            <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
+                                <Form.Control type="text" placeholder="Segment text" />
+                            </Form.Group>
+                        </Col>
+                    </Row>
+                </Form>
             </Container>
         )
     }
 }
 
-export default Version;
+export default Extras;

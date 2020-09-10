@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 import './spec.css'
 
 import Agency from '../DataEntry/Agency'
@@ -163,6 +164,12 @@ class App extends React.Component {
                   <Extras />
                 </AccordionPanel>
               </AccordionItem>
+            </Col>
+          </Row>
+          <Row style={{paddingBottom:"50px"}}>
+            <Col lg="12">
+              <Button variant="success">Preview</Button>
+              {/* {' '}<i class="material-icons">remove_red_eye</i> */}
             </Col>
           </Row>
         </Accordion>

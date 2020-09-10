@@ -4,7 +4,7 @@ import PublicRoute from "./Route/Publicroute";
 
 import Topnav from './Components/Layout/Topnav'
 import Dashboard from './Components/Dashboard/Dashboard'
-import CreateSpec from './Components/CreateSpec/Spec'
+import CreateSpec from './Components/CreateSpec/CreateSpec'
 import CreateEDI from './Components/CreateEDI/CreateEDI'
 import Search from './Components/Search/Search'
 import Reports from './Components/Reports/Reports'

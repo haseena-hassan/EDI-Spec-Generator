@@ -16,11 +16,10 @@ class Agency extends Component {
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <p>Choose Agency</p>
                                 <Form.Control as="select">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>TradaCom</option>
+                                <option>Edifact</option>
+                                <option>XCII</option>
+                                <option>ANSI</option>
                                 </Form.Control>
                             </Form.Group>
                         </Form>
