@@ -8,6 +8,8 @@ import CreateSpec from './Components/CreateSpec/CreateSpec'
 import CreateEDI from './Components/CreateEDI/CreateEDI'
 import Search from './Components/Search/Search'
 import Reports from './Components/Reports/Reports'
+import LoginSession from './Components/LoginSession/LoginSession'
+
 
 
 import './App.css';
@@ -23,6 +25,8 @@ class App extends React.Component {
           <PublicRoute path="/create-edi" component={CreateEDI} />
           <PublicRoute path="/search" component={Search} />
           <PublicRoute path="/reports" component={Reports} />
+          <PublicRoute path="/login" component={LoginSession} />
+
         </div>
       </Router>
     );

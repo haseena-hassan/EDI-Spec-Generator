@@ -37,6 +37,7 @@ class Agency extends Component {
                                     })}
                                 </Form.Control>
                             </Form.Group>
+                            <Form.Text className="text-muted">Agency/Standard</Form.Text>
                         </Form>
                     </Col>
                 </Row>
