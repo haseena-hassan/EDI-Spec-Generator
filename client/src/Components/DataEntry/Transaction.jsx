@@ -12,7 +12,7 @@ class Transaction extends Component {
     render() {
         return (
             <Container>
-                <Row>
+                <Row className="justify-content-md-center">
                     <Col lg="3">
                         <Form>
                             <Form.Group controlId="exampleForm.ControlInput1" style={{border:"0 0 1 0"}}>
@@ -20,28 +20,21 @@ class Transaction extends Component {
                             </Form.Group>
                         </Form>
                     </Col>
-                    <Col lg="9">
+                    <Col lg="8">
                         <Pagination  style={{float:"right"}}>
                             <Pagination.First />
                             <Pagination.Prev />
                             <Pagination.Item>{1}</Pagination.Item>
-                            <Pagination.Ellipsis />
-
-                            <Pagination.Item>{10}</Pagination.Item>
-                            <Pagination.Item>{11}</Pagination.Item>
-                            <Pagination.Item>{12}</Pagination.Item>
-                            <Pagination.Item>{13}</Pagination.Item>
-                            <Pagination.Item>{14}</Pagination.Item>
-
-                            <Pagination.Ellipsis />
-                            <Pagination.Item>{20}</Pagination.Item>
+                            <Pagination.Item>{2}</Pagination.Item>
+                            <Pagination.Item>{3}</Pagination.Item>
+                            <Pagination.Item>{4}</Pagination.Item>
                             <Pagination.Next />
                             <Pagination.Last />
                         </Pagination>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
+                <Row className="justify-content-md-center">
+                    <Col lg="10">
                         <Table bordered  hover>
                             <thead>
                                 <tr>
@@ -50,7 +43,7 @@ class Transaction extends Component {
                                 <th>Description</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody style={{cursor:"pointer"}}>
                                 <tr>
                                 <td>1</td>
                                 <td>Mark</td>

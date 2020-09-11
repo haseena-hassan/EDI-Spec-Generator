@@ -58,7 +58,7 @@ const AccordionHeader = (props) => {
             <Col lg="10">
               <Row className="accordion-text">
                 <Col lg="1.5">
-                  { expanded ? <i class="material-icons">check_circle</i> : <i class="material-icons">add_circle_outline</i> }
+                  { props.status ? <i class="material-icons">check_circle</i> : <i class="material-icons">add_circle_outline</i> }
                 </Col>
                 <Col lg="3">
                   { props.children }
@@ -89,7 +89,24 @@ const AccordionPanel = (props) => {
 class App extends React.Component {
   constructor(props) {
     super(props)
+    
+    this.state = {
+      statAgen : false,
+      statVers : false,
+      statTrans : false,
+      statSeg : false,
+      statElem : false,
+      statExtr : false
+    }
   }
+
+  handleStatusAgen = (status) => { this.setState = {statAgen : status} }
+  handleStatusVers = (status) => { this.setState = {statVers : status} }
+  handleStatusTrans = (status) => { this.setState = {statTrans : status} }
+  handleStatusSeg = (status) => { this.setState = {statSeg : status} }
+  handleStatusElem = (status) => { this.setState = {statElem : status} }
+  handleStatusExtr = (status) => { this.setState = {statExtr : status} }
+
   
   render() {
     return (
@@ -98,11 +115,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statAgen}>
                   Agency
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Agency />
+                  <Agency status={this.handleStatusAgen} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -114,7 +131,7 @@ class App extends React.Component {
                   Version
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Version />
+                  <Version status={this.handleStatusVers} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -126,7 +143,7 @@ class App extends React.Component {
                   Transaction
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Transaction />
+                  <Transaction status={this.handleStatusTrans} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -138,7 +155,7 @@ class App extends React.Component {
                   Segment
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Segment />
+                  <Segment status={this.handleStatusSeg} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -150,7 +167,7 @@ class App extends React.Component {
                   Elements
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Element />
+                  <Element status={this.handleStatusElem} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -162,7 +179,7 @@ class App extends React.Component {
                   Additional Information
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Extras />
+                  <Extras status={this.handleStatusExtr} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -170,7 +187,7 @@ class App extends React.Component {
         </Accordion> 
         <Row style={{paddingBottom:"50px"}}>
             <Col lg="12">
-              <Preview />
+              <Preview disabled={!(this.state.statAgen && this.state.statElem && this.state.statVers && this.state.statTrans && this.state.statSeg && this.state.statExtr)} />
               {/* {' '}<i class="material-icons">remove_red_eye</i> */}
             </Col>
         </Row>

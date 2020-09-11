@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-function MyVerticallyCenteredModal(props) {
+function PreviewModal(props) {
     return (
       <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
@@ -22,16 +22,14 @@ function MyVerticallyCenteredModal(props) {
   }
 
   
-function Preview() {
+function Preview(status) {
     const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-            Preview
-        </Button>
+        <Button variant="primary" disabled={status} onClick={() => setModalShow(true)}>Preview</Button>
 
-        <MyVerticallyCenteredModal
+        <PreviewModal
             show={modalShow}
             onHide={() => setModalShow(false)}
             style={{background:"transparent",bottom:"0",height:"100vh"}}
