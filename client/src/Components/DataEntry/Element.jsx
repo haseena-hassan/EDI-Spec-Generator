@@ -9,8 +9,11 @@ import Nav from 'react-bootstrap/Nav'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
-class TableView extends Component {
+import SetCode from '../Modals/SetCode'
+import CustomCode from '../Modals/CustomCode'
 
+
+class TableView extends Component {
     render() {
         return (
             <Table bordered  hover>
@@ -22,7 +25,10 @@ class TableView extends Component {
                     <th>Req.</th>
                     <th>Group</th>
                     <th>Code</th>
-                    <th style={{display:"flex"}}><i class="material-icons">check_box_outline_blank</i>All</th>
+                    <th style={{display:"flex"}}>
+                        <i class="material-icons">check_box_outline_blank</i>{'  '}
+                        <p>All</p>
+                    </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,8 +39,7 @@ class TableView extends Component {
                     <td>M</td>
                     <td>Otto</td>
                     <td>
-                        <Button variant="info">Set Code</Button>{'     '}
-                        <Button variant="info">Custom</Button>
+                        <SetCode />{'     '}<CustomCode />
                     </td>
                     <th><i class="material-icons">check_box_outline_blank</i></th>
                     </tr>
@@ -54,8 +59,7 @@ class TableView extends Component {
                     <td>O</td>
                     <td>Otto</td>
                     <td>
-                        <Button variant="info">Set Code</Button>{'     '}
-                        <Button variant="info">Custom</Button>
+                        <SetCode />{'     '}<CustomCode />
                     </td>
                     <th><i class="material-icons">check_box_outline_blank</i></th>
                     </tr>

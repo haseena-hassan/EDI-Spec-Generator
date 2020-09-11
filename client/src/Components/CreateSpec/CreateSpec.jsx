@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Button from 'react-bootstrap/Button'
 import './spec.css'
 
 import Agency from '../DataEntry/Agency'
@@ -11,6 +10,8 @@ import Transaction from '../DataEntry/Transaction'
 import Segment from '../DataEntry/Segment'
 import Element from '../DataEntry/Element'
 import Extras from '../DataEntry/Extras'
+import Preview from '../Modals/Preview'
+
 
 
 const Accordion = (props) => {
@@ -52,7 +53,7 @@ const AccordionHeader = (props) => {
   return (
     <AccordionItemContext.Consumer>
       {({ expanded, toggleExpansion }) => (
-        <Container>
+        <Container style={{cursor:"pointer"}}>
           <Row className="accordion-header" onClick={toggleExpansion}>
             <Col lg="10">
               <Row className="accordion-text">
@@ -166,13 +167,13 @@ class App extends React.Component {
               </AccordionItem>
             </Col>
           </Row>
-          <Row style={{paddingBottom:"50px"}}>
+        </Accordion> 
+        <Row style={{paddingBottom:"50px"}}>
             <Col lg="12">
-              <Button variant="success">Preview</Button>
+              <Preview />
               {/* {' '}<i class="material-icons">remove_red_eye</i> */}
             </Col>
-          </Row>
-        </Accordion>
+        </Row>
       </Container>
       
     )

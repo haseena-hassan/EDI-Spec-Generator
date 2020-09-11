@@ -49,7 +49,10 @@ class Version extends Component {
                                 <th>Segment ID</th>
                                 <th>Section</th>
                                 <th>Requirement</th>
-                                <th><span><i class="material-icons">check_box_outline_blank</i>Select All</span></th>
+                                <th style={{display:"flex"}}>
+                                    <i class="material-icons">check_box_outline_blank</i>{'  '}
+                                    <p>All</p>
+                                </th>
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
