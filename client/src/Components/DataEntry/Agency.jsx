@@ -22,6 +22,7 @@ class Agency extends Component {
                                 <option>ANSI</option>
                                 </Form.Control>
                             </Form.Group>
+                            <Form.Text className="text-muted">Agency/Standard</Form.Text>
                         </Form>
                     </Col>
                 </Row>

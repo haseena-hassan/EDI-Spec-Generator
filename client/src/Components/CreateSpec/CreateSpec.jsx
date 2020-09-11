@@ -19,7 +19,6 @@ const Accordion = (props) => {
     <div className="accordion">{ props.children }</div>
   )
 }
-  
 const AccordionItemContext = React.createContext({
   expanded: false,
   toggleExpansion: () => {}
