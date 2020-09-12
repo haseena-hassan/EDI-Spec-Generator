@@ -5,7 +5,7 @@ exports.index = function (req, res) {
 	else{
 		res.send('Invalid Request');
 	}
-}
+} 
 
 
 
@@ -15,7 +15,7 @@ exports.index = function (req, res) {
 // ROUTES
 // ==============================================
 //app.use('/',router);
-//routes for api
+//Routes for api
 const api = require('./api/index')
 app.use('/',api);
 

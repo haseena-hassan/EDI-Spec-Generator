@@ -1,5 +1,5 @@
-var segmentUsage = require('./controllers/SegmentUsage.js');
-var segmentDescription = require('./controllers/SegmentDescription.js');
+var segmentUsage = require('../controllers/SegmentUsage.js');
+var segmentDescription = require('../controllers/SegmentDescription.js');
 
 
 exports.getSegmentUsage = function(req,res){

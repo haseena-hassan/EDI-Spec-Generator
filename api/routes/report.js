@@ -1,4 +1,4 @@
-var ediLog = require('./controllers/EdiLog.js');
+var ediLog = require('../controllers/EdiLog.js');
 
 
 exports.getReport = function(req,res){

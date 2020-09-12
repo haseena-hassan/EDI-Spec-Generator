@@ -24,6 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 
+//Routes for api
+const api = require('./api/index')
+app.use('/api',api);
 
 
 // Production build

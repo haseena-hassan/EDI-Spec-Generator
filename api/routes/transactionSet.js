@@ -1,4 +1,4 @@
-var transactionSet = require('./controllers/TransactionSet.js');
+var transactionSet = require('../controllers/TransactionSet.js');
 
 
 exports.getTransactionSet = function(req,res){

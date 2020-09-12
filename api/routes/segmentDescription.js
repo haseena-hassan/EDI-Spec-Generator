@@ -1,4 +1,4 @@
-var segmentDescription = require('./controllers/SegmentDescription.js');
+var segmentDescription = require('../controllers/SegmentDescription.js');
 
 
 exports.getSegmentDescription = function(req,res){

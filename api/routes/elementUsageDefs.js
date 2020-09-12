@@ -1,5 +1,5 @@
-var elementUsageDefs = require('./controllers/ElementUsageDefs.js');
-var code = require('./controllers/Code.js');
+var elementUsageDefs = require('../controllers/ElementUsageDefs.js');
+var code = require('../controllers/Code.js');
 
 
 //local variables

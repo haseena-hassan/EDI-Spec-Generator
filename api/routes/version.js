@@ -1,4 +1,4 @@
-var version = require('./controllers/Version.js');
+var version = require('../controllers/Version.js');
 
 exports.getVersion = function(req,res){
 	var params=req.body;

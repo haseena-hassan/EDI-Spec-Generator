@@ -1,4 +1,4 @@
-var ediDraft = require('./controllers/EdiDraft.js');
+var ediDraft = require('../controllers/EdiDraft.js');
 
 
 exports.createDraft = function(req,res){
