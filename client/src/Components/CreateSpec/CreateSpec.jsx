@@ -99,15 +99,16 @@ class App extends React.Component {
     }
   }
 
-  handleStatusAgen = (status) => { this.setState = {statAgen : status} }
-  handleStatusVers = (status) => { this.setState = {statVers : status} }
-  handleStatusTrans = (status) => { this.setState = {statTrans : status} }
-  handleStatusSeg = (status) => { this.setState = {statSeg : status} }
-  handleStatusElem = (status) => { this.setState = {statElem : status} }
-  handleStatusExtr = (status) => { this.setState = {statExtr : status} }
+  handleStatusAgen = (status) => { this.setState({statAgen : status}) }
+  handleStatusVers = (status) => { this.setState({statVers : status}) }
+  handleStatusTrans = (status) => { this.setState({statTrans : status}) }
+  handleStatusSeg = (status) => { this.setState({statSeg : status}) }
+  handleStatusElem = (status) => { this.setState({statElem : status}) }
+  handleStatusExtr = (status) => { this.setState({statExtr : status}) }
 
   
   render() {
+    const previewStat = !(this.state.statAgen && this.state.statElem && this.state.statVers && this.state.statTrans && this.state.statSeg && this.state.statExtr) ? "active" : "disabled"
     return (
       <Container style={{paddingTop:"50px"}}>
         <Accordion>
@@ -118,7 +119,7 @@ class App extends React.Component {
                   Agency
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Agency status={this.handleStatusAgen} />
+                  <Agency handlestatus={this.handleStatusAgen} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -126,11 +127,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statVers}>
                   Version
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Version status={this.handleStatusVers} />
+                  <Version handlestatus={this.handleStatusVers} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -138,11 +139,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statTrans}>
                   Transaction
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Transaction status={this.handleStatusTrans} />
+                  <Transaction handlestatus={this.handleStatusTrans} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -150,11 +151,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statSeg}>
                   Segment
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Segment status={this.handleStatusSeg} />
+                  <Segment handlestatus={this.handleStatusSeg} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -162,11 +163,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statElem}>
                   Elements
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Element status={this.handleStatusElem} />
+                  <Element handlestatus={this.handleStatusElem} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -174,11 +175,11 @@ class App extends React.Component {
           <Row >
             <Col lg="12">
               <AccordionItem>
-                <AccordionHeader>
+                <AccordionHeader status={this.state.statExtr}>
                   Additional Information
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Extras status={this.handleStatusExtr} />
+                  <Extras handlestatus={this.handleStatusExtr} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -186,7 +187,7 @@ class App extends React.Component {
         </Accordion> 
         <Row style={{paddingBottom:"50px"}}>
             <Col lg="12">
-              <Preview disabled={!(this.state.statAgen && this.state.statElem && this.state.statVers && this.state.statTrans && this.state.statSeg && this.state.statExtr)} />
+              <Preview status={previewStat}/>
               {/* {' '}<i class="material-icons">remove_red_eye</i> */}
             </Col>
         </Row>

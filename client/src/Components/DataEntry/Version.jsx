@@ -9,7 +9,29 @@ import Table from 'react-bootstrap/Table'
 
 
 class Version extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            version : ''
+        }
+    }
+
     render() {
+        const list = [
+            {
+                id: "007020",
+                desc: "ASC X12  VERSION 7 RELEASE 2 SUBRELEASE 0"
+            },
+            {
+                id: "D  14B",
+                desc: "EDIFACT DIRECTORY D.14B - OCTOBER 2015"
+            },
+            {
+                id: "D  13B",
+                desc: "EDIFACT DIRECTORY D.13B - NOVEMBER 2014"
+            }
+        ]
+
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -38,27 +60,22 @@ class Version extends Component {
                         <Table bordered  hover>
                             <thead>
                                 <tr>
-                                <th>#</th>
                                 <th>Version</th>
                                 <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                </tr>
-                                <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                </tr>
-                                <tr>
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
+                                {list.map(item => {
+                                    return(
+                                        <tr onClick={() => {
+                                            this.setState({version: item})
+                                            this.props.handlestatus(true)
+                                        }}>
+                                        <td>{item.id}</td>
+                                        <td>{item.desc}</td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </Table>
                     </Col>

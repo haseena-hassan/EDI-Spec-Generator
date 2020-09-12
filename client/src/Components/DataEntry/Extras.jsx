@@ -73,7 +73,7 @@ class Extras extends Component {
                     </Row>
                     <Row>
                         <Col md={{ span: 2, offset: 10 }}>
-                            <Button variant="success">Save</Button>
+                            <Button variant="success" onClick={() => { this.props.handlestatus(true)}}>Save</Button>
                         </Col>
                     </Row>
                 </Form>

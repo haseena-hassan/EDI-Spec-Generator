@@ -9,7 +9,30 @@ import Table from 'react-bootstrap/Table'
 
 
 class Transaction extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            transaction : ''
+        }
+    }
+
+
     render() {
+        const list = [
+            {
+                tset: "BALANC",
+                desc: "BALANCE MESSAGE"
+            },
+            {
+                tset: "BANSTA",
+                desc: "BANKING STATUS MESSAGE"
+            },
+            {
+                tset: "AUTHOR",
+                desc: "AUTHORIZATION MESSAGE"
+            }
+        ]
+
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -38,27 +61,22 @@ class Transaction extends Component {
                         <Table bordered  hover>
                             <thead>
                                 <tr>
-                                <th>#</th>
                                 <th>Transaction Set</th>
                                 <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                </tr>
-                                <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                </tr>
-                                <tr>
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                </tr>
+                                {list.map(item => {
+                                    return(
+                                        <tr onClick={() => {
+                                            this.setState({transaction: item})
+                                            this.props.handlestatus(true)
+                                        }}>
+                                        <td>{item.tset}</td>
+                                        <td>{item.desc}</td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </Table>
                     </Col>

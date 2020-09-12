@@ -14,7 +14,52 @@ import CustomCode from '../Modals/CustomCode'
 
 
 class TableView extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            element : []
+        }
+    }
+    addElement(elem){ 
+        const element = [...this.state.element] 
+        element.push(elem) 
+        this.setState({ element }) 
+        console.log(element)
+    } 
+
+
     render() {
+        const list = [
+            {
+                pos: "1",
+                elemId: "1073",
+                desc: "RESPONSE CODE",
+                grp: "H",
+                req: "M"
+            },
+            {
+                pos: "2",
+                elemId: "006040RAIL",
+                desc: "AGENCY QUALIFIER CODE",
+                grp: "H",
+                req: "M"
+            },
+            {
+                pos: "3",
+                elemId: "006040RAIL",
+                desc: "FOLLOW-UP ACTION CODE",
+                grp: "H",
+                req: "M"
+            },
+            {
+                pos: "4",
+                elemId: "006040RAIL",
+                desc: "REJECT REASON CODE",
+                grp: "H",
+                req: "M"
+            },
+        ]
+
         return (
             <Table bordered  hover>
                 <thead>
@@ -32,37 +77,21 @@ class TableView extends Component {
                     </tr>
                 </thead>
                 <tbody style={{cursor:"pointer"}}>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>M</td>
-                    <td>Otto</td>
-                    <td>
-                        <SetCode />{'     '}<CustomCode />
-                    </td>
-                    <th><i class="material-icons">check_box_outline_blank</i></th>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>M</td>
-                    <td>Otto</td>
-                    <td></td>
-                    <th><i class="material-icons">check_box_outline_blank</i></th>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td>Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>O</td>
-                    <td>Otto</td>
-                    <td>
-                        <SetCode />{'     '}<CustomCode />
-                    </td>
-                    <th><i class="material-icons">check_box_outline_blank</i></th>
-                    </tr>
+                    {list.map(item => {
+                        return(
+                            <tr onClick={() => {
+                                this.addElement(item)
+                            }}>
+                                <td>{item.pos}</td>
+                                <td>{item.elemId}</td>
+                                <td>{item.desc}</td>
+                                <td>{item.req}</td>
+                                <td>{item.grp}</td>
+                                <td>{(item.pos=="2"||item.pos=="4") ? '-' : <><SetCode/>{' '}<CustomCode /></>}</td>
+                                <td><i class="material-icons">check_box_outline_blank</i></td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </Table>
         )
@@ -129,7 +158,7 @@ class Element extends Component {
                 </Row>
                 <Row>
                     <Col md={{ span: 2, offset: 10 }}>
-                        <Button variant="success">Save</Button>
+                        <Button variant="success" onClick={() => { this.props.handlestatus(true)}}>Save</Button>
                     </Col>
                 </Row>
             </Container>

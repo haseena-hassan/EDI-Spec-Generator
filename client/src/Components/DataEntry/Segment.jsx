@@ -10,7 +10,47 @@ import Button from 'react-bootstrap/Button'
 
 
 class Segment extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            segment : []
+        }
+    }
+    addSegment(seg){ 
+        const segment = [...this.state.segment] 
+        segment.push(seg) 
+        this.setState({ segment }) 
+        console.log(segment)
+    } 
+
     render() {
+        const list = [
+            {
+                pos: "1",
+                segId: "BGM",
+                section: "H",
+                req: "M"
+            },
+            {
+                pos: "2",
+                segId: "DTM",
+                section: "H",
+                req: "C"
+            },
+            {
+                pos: "3",
+                segId: "FTX",
+                section: "H",
+                req: "C"
+            },
+            {
+                pos: "4",
+                segId: "FTX",
+                section: "F",
+                req: "O"
+            },
+        ]
+
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -50,34 +90,26 @@ class Segment extends Component {
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                                <td><i class="material-icons">check_box_outline_blank</i></td>
-                                </tr>
-                                <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>Otto</td>
-                                <td><i class="material-icons">check_box_outline_blank</i></td>
-                                </tr>
-                                <tr>
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter</td>
-                                <td>Otto</td>
-                                <td><i class="material-icons">check_box_outline_blank</i></td>
-                                </tr>
+                                {list.map(item => {
+                                    return(
+                                        <tr onClick={() => {
+                                            this.addSegment(item)
+                                        }}>
+                                        <td>{item.pos}</td>
+                                        <td>{item.segId}</td>
+                                        <td>{item.section}</td>
+                                        <td>{item.req}</td>
+                                        <td><i class="material-icons">check_box_outline_blank</i></td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </Table>
                     </Col>
                 </Row>
                 <Row>
                     <Col md={{ span: 2, offset: 10 }}>
-                        <Button variant="success">Save</Button>
+                        <Button variant="success" onClick={() => { this.props.handlestatus(true)}}>Save</Button>
                     </Col>
                 </Row>
             </Container>

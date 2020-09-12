@@ -14,8 +14,10 @@ class Agency extends Component {
         }
     }
 
-    handleAgenDone = () => {
-
+    handleAgenDone = (item) => {
+        this.setState({agency : item})
+        this.props.handlestatus(true)
+        console.log(item)
     }
 
     render() {
@@ -27,17 +29,16 @@ class Agency extends Component {
                     <Col md={{ span: 4, offset: 1 }}>
                         <Form>
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <p>Choose Agency</p>
-                                <Form.Control as="select" >
-                                    <option value="" disabled selected>Choose Agency</option>
+                                <p>Agency/Standard</p>
+                                <Form.Control as="select"  value={this.state.agency} onChange={item => this.handleAgenDone(item.target.value)}>
+                                    <option value="" disabled >Choose Agency</option>
                                     {list.map( item => {
                                         return(
-                                            <option>{item}</option>
+                                            <option value={item}>{item}</option>
                                         )
                                     })}
                                 </Form.Control>
                             </Form.Group>
-                            <Form.Text className="text-muted">Agency/Standard</Form.Text>
                         </Form>
                     </Col>
                 </Row>

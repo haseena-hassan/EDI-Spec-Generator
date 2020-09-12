@@ -27,7 +27,7 @@ function Preview(status) {
 
     return (
         <>
-        <Button variant="primary" disabled={status} onClick={() => setModalShow(true)}>Preview</Button>
+        <Button variant="primary" {...status} onClick={() => setModalShow(true)}>Preview</Button>
 
         <PreviewModal
             show={modalShow}
