@@ -22,6 +22,8 @@ exports.getSegmentUsage = function(req,res){
 				"SegmentID" : params.segment
 			};
 			segmentDescription.get(query,function(msg,data){
+				console.log(msg);
+				console.log(data);
 				msg=JSON.parse(msg);
 				obj.status=msg.status;
 				obj.message=msg.message;

@@ -5,34 +5,35 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Pagination from 'react-bootstrap/Pagination'
 import Table from 'react-bootstrap/Table'
-
+import ReactPaginate from 'react-paginate'
 
 
 class Transaction extends Component {
     constructor(props){
         super(props)
         this.state = {
-            transaction : ''
+            transaction : '',
+            offset: 0,
+            perPage: 10,
+            currentPage: 0
         }
+        this.handlePageClick = this.handlePageClick.bind(this);
+    }
+
+    handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        const offset = selectedPage * this.state.perPage;
+        this.setState({
+            currentPage: selectedPage,
+            offset: offset
+        });
     }
 
 
     render() {
-        const list = [
-            {
-                tset: "BALANC",
-                desc: "BALANCE MESSAGE"
-            },
-            {
-                tset: "BANSTA",
-                desc: "BANKING STATUS MESSAGE"
-            },
-            {
-                tset: "AUTHOR",
-                desc: "AUTHORIZATION MESSAGE"
-            }
-        ]
-
+        const data = this.props.data
+        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+        
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -43,17 +44,19 @@ class Transaction extends Component {
                             </Form.Group>
                         </Form>
                     </Col>
-                    <Col lg="8">
-                        <Pagination  style={{float:"right"}}>
-                            <Pagination.First />
-                            <Pagination.Prev />
-                            <Pagination.Item>{1}</Pagination.Item>
-                            <Pagination.Item>{2}</Pagination.Item>
-                            <Pagination.Item>{3}</Pagination.Item>
-                            <Pagination.Item>{4}</Pagination.Item>
-                            <Pagination.Next />
-                            <Pagination.Last />
-                        </Pagination>
+                    <Col lg={{span : 6, offset : 2}}>
+                        <ReactPaginate
+                            previousLabel={"prev"}
+                            nextLabel={"next"}
+                            breakLabel={"..."}
+                            breakClassName={"break-me"}
+                            pageCount={Math.ceil(data.length / this.state.perPage)}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={this.handlePageClick}
+                            containerClassName={"pagination"}
+                            subContainerClassName={"pages pagination"}
+                            activeClassName={"active"}/>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
@@ -66,17 +69,16 @@ class Transaction extends Component {
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                {list.map(item => {
-                                    return(
-                                        <tr onClick={() => {
-                                            this.setState({transaction: item})
-                                            this.props.handlestatus(true)
-                                        }}>
-                                        <td>{item.tset}</td>
-                                        <td>{item.desc}</td>
-                                        </tr>
-                                    )
-                                })}
+                                {slice.map(item => 
+                                    <tr onClick={() => {
+                                        this.setState({transaction: item})
+                                        console.log(item)
+                                        this.props.handlestatus(true, item)
+                                    }}>
+                                    <td>{item.TransactionSet}</td>
+                                    <td>{item.Description}</td>
+                                    </tr> )
+                                }
                             </tbody>
                         </Table>
                     </Col>

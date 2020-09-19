@@ -31,14 +31,14 @@ router.post('/transactionSet/get', transactionSet.getTransactionSet)
 router.post('/transactionSet/getAll', transactionSet.getAllTransactionSet)
 
 
-// SegmentDescription APIs
-router.post('/segmentDescription/get', segmentDescription.getSegmentDescription)
-
-
 // SegmentUsage APIs
 router.post('/segmentUsage/get', segmentUsage.getSegmentUsage)
 router.post('/segmentUsage/getFromPosition', segmentUsage.getSegmentUsageFromPosition)
 router.post('/segmentUsage/getAll', segmentUsage.getAllSegmentUsage)	
+
+
+// SegmentDescription APIs
+router.post('/segmentDescription/get', segmentDescription.getSegmentDescription)
 
 
 // ElementUsageDefs APIs

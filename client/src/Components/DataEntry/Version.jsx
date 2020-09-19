@@ -31,6 +31,8 @@ class Version extends Component {
                 desc: "EDIFACT DIRECTORY D.13B - NOVEMBER 2014"
             }
         ]
+        const lis = this.props.data
+        console.log(lis)
 
         return (
             <Container>
@@ -65,14 +67,15 @@ class Version extends Component {
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                {list.map(item => {
+                                {lis.map(item => {
                                     return(
                                         <tr onClick={() => {
                                             this.setState({version: item})
-                                            this.props.handlestatus(true)
+                                            console.log(item)
+                                            this.props.handlestatus(true, item.Version)
                                         }}>
-                                        <td>{item.id}</td>
-                                        <td>{item.desc}</td>
+                                        <td>{item.Version}</td>
+                                        <td>{item.Description}</td>
                                         </tr>
                                     )
                                 })}

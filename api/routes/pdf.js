@@ -10,11 +10,10 @@ exports.getPdf = function(req,res){
 	var transactionSet=params.transactionSet;
 	var version=params.version;
 	var transactionDescription=params.transactionDescription;
-	var transactionFunctionalGroup=params.transactionFunctionalGroup;
 	var headingText=params.headingText;	
 	var footerText=params.footerText;
 	footerText=footerText.split('$');
-	var businessPartnerText=params.businessPartnerText;
+	var businessPartnerText=params.businessPartnerText	;
 	var numberOfHeadingSegments=params.numberOfHeadingSegments;
 	var numberOfDetailSegments=params.numberOfDetailSegments;
 	var numberOfSummarySegments=params.numberOfSummarySegments;
@@ -504,6 +503,21 @@ var maxx=0;
 						doc.text(segmentText[segmentUsage[x]['Position']][z],{lineBreak:true});
 					}
 				}
+
+				// for(z in segmentText[segmentUsage[x]['Position']])
+				// {
+				// 	if(z%2!=0)
+				// 	{
+				// 		doc.moveDown(2);
+				// 		doc.font('Helvetica-Bold');
+				// 		doc.text(segmentText[segmentUsage[x]['Position']][z],{lineBreak:true,underline:true});
+				// 	}
+				// 	else
+				// 	{
+				// 		doc.font('Helvetica');
+				// 		doc.text(segmentText[segmentUsage[x]['Position']][z],{lineBreak:true});
+				// 	}
+				// }
 			}			
 
 //End element summary with segments ///////////////////////////////////////////////////////////////////////////////////////////////

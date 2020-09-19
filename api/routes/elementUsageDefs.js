@@ -13,9 +13,9 @@ exports.getMandatoryElementStatus = function(req,res){
 		"Agency" : params.agency,
 		"Version" : params.version, 
 		"SegmentID" : params.segmentId,
-		"RequirementDesignator" : 'M'
+		"RequirementDesignator" : "M"
 	};
-	elementUsageDefs.getOne(query,function(msg,data){
+	elementUsageDefs.get(query,function(msg,data){
 		var obj=JSON.parse(msg);
 		obj.data=data;
 		res.send(JSON.stringify(obj));
