@@ -3,54 +3,51 @@ import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Pagination from 'react-bootstrap/Pagination'
+import ReactPaginate from 'react-paginate'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
-
+import './style.css'
 
 
 class Segment extends Component {
     constructor(props){
         super(props)
         this.state = {
-            segment : []
+            segment : [],
+            offset: 0,
+            perPage: 5,
+            currentPage: 0
         }
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
-    addSegment(seg){ 
-        const segment = [...this.state.segment] 
-        segment.push(seg) 
+
+    handlePageClick = (e) => {
+        const selectedPage = e.selected;
+        const offset = selectedPage * this.state.perPage;
+        this.setState({
+            currentPage: selectedPage,
+            offset: offset
+        });
+    }
+
+    handleSelection = (pos) => { 
+        const data = this.props.data
+        const ind = data.findIndex(el => (el.Position == pos))
+        const item = data[ind]
+        const segment = [...this.state.segment]
+        if(segment.includes(item)){
+            segment.splice(segment.indexOf(item), 1)
+        } else{
+            segment.push(item) 
+        }
         this.setState({ segment }) 
         console.log(segment)
     } 
 
     render() {
-        const list = [
-            {
-                pos: "1",
-                segId: "BGM",
-                section: "H",
-                req: "M"
-            },
-            {
-                pos: "2",
-                segId: "DTM",
-                section: "H",
-                req: "C"
-            },
-            {
-                pos: "3",
-                segId: "FTX",
-                section: "H",
-                req: "C"
-            },
-            {
-                pos: "4",
-                segId: "FTX",
-                section: "F",
-                req: "O"
-            },
-        ]
-
+        const data = this.props.data
+        const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+        
         return (
             <Container>
                 <Row className="justify-content-md-center">
@@ -61,55 +58,62 @@ class Segment extends Component {
                             </Form.Group>
                         </Form>
                     </Col>
-                    <Col lg="8">
-                        <Pagination  style={{float:"right"}}>
-                            <Pagination.First />
-                            <Pagination.Prev />
-                            <Pagination.Item>{1}</Pagination.Item>
-                            <Pagination.Item>{2}</Pagination.Item>
-                            <Pagination.Item>{3}</Pagination.Item>
-                            <Pagination.Item>{4}</Pagination.Item>
-                            <Pagination.Next />
-                            <Pagination.Last />
-                        </Pagination>
+                    <Col lg={{span : 6, offset : 2}}>
+                        <ReactPaginate
+                            previousLabel={"prev"}
+                            nextLabel={"next"}
+                            breakLabel={"..."}
+                            breakClassName={"break-me"}
+                            pageCount={Math.ceil(data.length / this.state.perPage)}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={this.handlePageClick}
+                            containerClassName={"pagination"}
+                            subContainerClassName={"pages pagination"}
+                            activeClassName={"active"}/>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Table bordered  hover>
+                <Row className="justify-content-md-center">
+                    <Col lg="10">
+                        <Table bordered >
                             <thead>
                                 <tr>
                                 <th>Position</th>
                                 <th>Segment ID</th>
                                 <th>Section</th>
                                 <th>Requirement</th>
-                                <th style={{display:"flex"}}>
+                                <th>Select</th>
+                                {/* <th style={{display:"flex"}}>
                                     <i class="material-icons">check_box_outline_blank</i>{'  '}
                                     <p>All</p>
-                                </th>
+                                </th> */}
                                 </tr>
                             </thead>
                             <tbody style={{cursor:"pointer"}}>
-                                {list.map(item => {
-                                    return(
-                                        <tr onClick={() => {
-                                            this.addSegment(item)
-                                        }}>
-                                        <td>{item.pos}</td>
-                                        <td>{item.segId}</td>
-                                        <td>{item.section}</td>
-                                        <td>{item.req}</td>
-                                        <td><i class="material-icons">check_box_outline_blank</i></td>
-                                        </tr>
-                                    )
-                                })}
+                                {slice.map(item => 
+                                    <tr>
+                                        <td>{item.Position}</td>
+                                        <td>{item.SegmentID}</td>
+                                        <td>{item.Section}</td>
+                                        <td>{item.RequirementDesignator}</td>
+                                        <td>
+                                            <input className="styled-checkbox" type="checkbox" id={item.Position} 
+                                                value={item} onClick={e =>  this.handleSelection(item.Position)}
+                                                checked={this.state.segment.includes(item)} />
+                                            <label for={item.Position}></label>
+                                        </td>
+                                    {/* <td><i class="material-icons">check_box_outline_blank</i></td>  */}
+                                    </tr>
+                                )}
                             </tbody>
                         </Table>
                     </Col>
                 </Row>
                 <Row>
                     <Col md={{ span: 2, offset: 10 }}>
-                        <Button variant="success" onClick={() => { this.props.handlestatus(true)}}>Save</Button>
+                        <Button variant="success" 
+                            onClick={() => { this.props.handlestatus(true, this.state.segment)}}
+                        >Save</Button>
                     </Col>
                 </Row>
             </Container>

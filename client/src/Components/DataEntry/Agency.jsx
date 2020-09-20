@@ -38,7 +38,6 @@ class Agency extends Component {
             <Container>
                 <Row>
                     <Col lg="12">
-                        <p>Choose Agency</p>
                         {this.state.data.map( item => {
                             return(
                                 <Button variant="light" 

@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Pagination from 'react-bootstrap/Pagination'
 import Table from 'react-bootstrap/Table'
 import ReactPaginate from 'react-paginate'
 
@@ -14,7 +13,7 @@ class Transaction extends Component {
         this.state = {
             transaction : '',
             offset: 0,
-            perPage: 10,
+            perPage: 5,
             currentPage: 0
         }
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -73,7 +72,7 @@ class Transaction extends Component {
                                     <tr onClick={() => {
                                         this.setState({transaction: item})
                                         console.log(item)
-                                        this.props.handlestatus(true, item)
+                                        this.props.handlestatus(true, item.TransactionSet, item.Description)
                                     }}>
                                     <td>{item.TransactionSet}</td>
                                     <td>{item.Description}</td>

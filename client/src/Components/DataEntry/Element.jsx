@@ -27,7 +27,6 @@ class TableView extends Component {
         console.log(element)
     } 
 
-
     render() {
         const list = [
             {
@@ -59,7 +58,6 @@ class TableView extends Component {
                 req: "M"
             },
         ]
-
         return (
             <Table bordered  hover>
                 <thead>
@@ -97,6 +95,7 @@ class TableView extends Component {
         )
     }
 }
+
 
 class Element extends Component {
     render() {

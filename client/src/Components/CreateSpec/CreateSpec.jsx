@@ -105,13 +105,13 @@ class App extends React.Component {
             agency : '',
             version : '',
             transactionSet : '',
+            transactionSetDesc : '',
             segments : [],
             elements : [],
 
             responseVer : [],
             responseTset : [],
-            responseSeg : [],
-            responseEle : []
+            responseSeg : []
         }
     }
 
@@ -131,29 +131,50 @@ class App extends React.Component {
             })
         })
     }
-    handleStatusVers = (status, vers) => { 
-        const data = {
-        "agency" : this.state.agency,
-        "version" : vers
-        }
+    handleStatusVers = (status, vers) => {
         this.setState({
-        statVers : status,
-        version : vers
+            statVers : status,
+            version : vers
+        }, () => {
+            axios.post('/api/transactionSet/getAll', {
+                agency : this.state.agency,
+                version : this.state.version
+            })
+            .then((res) => {
+                this.setState({responseTset : res.data.data})
+                console.log(res.data.data)
+            }, (error) => {
+                console.log(error)
+            })
         }) 
-        axios.post('/api/transactionSet/getAll', data)
-        .then((res) => {
-            this.setState({responseTset : res.data.data})
-            console.log(res.data.data)
-        }, (error) => {
-        console.log(error)
-        })
     }
-    handleStatusTrans = (status, trans) => {
+    handleStatusTrans = (status, transId, transDesc) => {
         this.setState({
-        statTrans : status
+            statTrans : status,
+            transactionSet : transId,
+            transactionSetDesc : transDesc
+        }, () => {
+            axios.post('/api/segmentUsage/getAll', {
+                agency : this.state.agency,
+                version : this.state.version,
+                transactionSet : this.state.transactionSet
+            })
+            .then((res) => {
+                this.setState({responseSeg : res.data.data})
+                console.log(res.data.data)
+            }, (error) => {
+                console.log(error)
+            })   
         })
     }
-    handleStatusSeg = (status) => { this.setState({statSeg : status}) }
+    handleStatusSeg = (status, segs) => { 
+        this.setState({
+            statSeg : status,
+            segments : segs
+        }, () => {
+            console.log(this.state.segments)
+        }) 
+    }
     handleStatusElem = (status) => { this.setState({statElem : status}) }
     handleStatusExtr = (status) => { this.setState({statExtr : status}) }
 
@@ -206,7 +227,7 @@ class App extends React.Component {
                   Segment
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Segment handlestatus={this.handleStatusSeg} />
+                  <Segment handlestatus={this.handleStatusSeg} data={this.state.responseSeg}/>
                 </AccordionPanel>
               </AccordionItem>
             </Col>
@@ -218,7 +239,8 @@ class App extends React.Component {
                   Elements
                 </AccordionHeader>
                 <AccordionPanel>
-                  <Element handlestatus={this.handleStatusElem} />
+                  <Element handlestatus={this.handleStatusElem} agency={this.state.agency} 
+                            version={this.state.version} segments={this.state.segments} />
                 </AccordionPanel>
               </AccordionItem>
             </Col>
