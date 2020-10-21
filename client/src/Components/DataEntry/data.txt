@@ -1,0 +1,395 @@
+localhost:5000/api/pdf/create
+
+{ "version": "007020",
+  "transactionSet": "101",
+  "transactionDescription": "NAME AND ADDRESS LISTS",
+  "transactionFunctionalGroup": "NL",
+  "headingText": "asd",
+  "footerText": "asd",
+  "businessPartnerText": "asda",
+  "numberOfHeadingSegments": "4",
+  "numberOfDetailSegments": "0",
+  "numberOfSummarySegments": "0",
+  "segmentUsage":
+   {
+    "1":
+    {    		 
+        "_id":"5f38b8a8361209d734d0fcd7",
+        "Agency":"X",
+        "Version":"007020",
+        "TransactionSetID":"101",
+        "Release":"0",
+        "Position":"1",
+        "SegmentID":"BGN",
+        "Section":"H",
+        "RequirementDesignator":"M",
+        "LoopID":"",
+        "BeginEnd":"",
+        "RequiredFirstSegment":"",
+        "MaximumLoopRepeat":"0",
+        "MaximumUsage":"1",
+        "LoopStart":false
+    },
+    "2":
+    {
+        "_id":"5f38b8a8361209d734d0fcd8",
+            "Agency":"X",
+        "Version":"007020",
+        "TransactionSetID":"101",
+        "Release":"0",
+        "Position":"2",
+        "SegmentID":"DTM",
+        "Section":"H",
+        "RequirementDesignator":"M",
+        "LoopID":"1000",
+        "BeginEnd":"B",
+        "RequiredFirstSegment":"Y",
+        "MaximumLoopRepeat":"999999",
+        "MaximumUsage":"1",
+        "LoopStart":true
+    },
+    "3":
+    {
+        "_id":"5f38b8a8361209d734d0fcd9",
+        "Agency":"X",
+        "Version":"007020",
+        "TransactionSetID":"101",
+        "Release":"0",
+        "Position":"3",
+        "SegmentID":"N1",
+        "Section":"H",
+        "RequirementDesignator":"M",
+        "LoopID":"1000",
+        "BeginEnd":"",
+        "RequiredFirstSegment":"",
+        "MaximumLoopRepeat":"0",
+        "MaximumUsage":"999999",
+        "LoopStart":false
+    },
+    "5":
+    {
+        "_id":"5f38b8a8361209d734d0fcdb",
+        "Agency":"X",
+        "Version":"007020",
+        "TransactionSetID":"101",
+        "Release":"0",
+        "Position":"5",
+        "SegmentID":"LX",
+        "Section":"H",
+        "RequirementDesignator":"M",
+        "LoopID":"1110",
+        "BeginEnd":"B",
+        "RequiredFirstSegment":"Y",
+        "MaximumLoopRepeat":"999999",
+        "MaximumUsage":"1",
+        "LoopStart":true
+    }
+	},
+  "numberOfElementsInSegment": 
+ 	{
+		"1":"3",
+		"2":"1",
+		"3":"2",
+		"5":"1"
+	},
+  "elementUsageDefs":
+   {
+    "1":
+    {
+        "1":
+        {
+            "_id":"404dd1236a2b702604346287cd1f2249",
+            "_rev":"1-745dd20bce7576258ad57e20f41eaf66",
+            "Agency":"X",
+            "Version":"007020",
+            "SegmentID":"BGN",
+            "ElementID":"0353",
+            "Release":"0",
+            "Position":"1",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"ID",
+            "Description":"TRANSACTION SET PURPOSE CODE",
+            "MinimumLength":"2",
+            "MaximumLength":"2",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"1"
+        },
+        "2":
+        {
+            "_id":"404dd1236a2b702604346287cd1f2337",
+            "_rev":"1-c72e2e0778b4075588216108c1e158f8",
+            "Agency":"X",
+            "Version":"007020",
+            "SegmentID":"BGN",
+            "ElementID":"0127",
+            "Release":"0",
+            "Position":"2",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"AN",
+            "Description":"REFERENCE IDENTIFICATION",
+            "MinimumLength":"1",
+            "MaximumLength":"80",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"1"
+        },
+        "3":
+        {
+            "_id":"404dd1236a2b702604346287cd1f2c45",
+            "_rev":"1-d93821379256c4a471ea8af5eb0eda43",
+            "Agency":"X","Version":"007020",
+            "SegmentID":"BGN","ElementID":"0373",
+            "Release":"0",
+            "Position":"3",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"DT",
+            "Description":"DATE",
+            "MinimumLength":"8",
+            "MaximumLength":"8",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"1"
+        }
+    },
+    "2":
+    {
+        "1":
+        {
+            "_id":"404dd1236a2b702604346287cd4e7672",
+            "_rev":"1-00ee47e0fed6023fa6e88e3ed033e57a",
+            "Agency":"X",
+            "Version":"007020",
+            "SegmentID":"DTM",
+            "ElementID":"0374",
+            "Release":"0",
+            "Position":"1",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"ID",
+            "Description":"DATE/TIME QUALIFIER",
+            "MinimumLength":"3",
+            "MaximumLength":"3",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"2"
+        }
+    },
+    "3":
+    {
+        "1":
+        {
+            "_id":"404dd1236a2b702604346287cdb6d3d5",
+            "_rev":"1-23995d90b63e8f47930d50aef07a3764",
+            "Agency":"X",
+            "Version":"007020",
+            "SegmentID":"N1",
+            "ElementID":"0098",
+            "Release":"0",
+            "Position":"1",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"ID",
+            "Description":"ENTITY IDENTIFIER CODE",
+            "MinimumLength":"2",
+            "MaximumLength":"3",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"3"
+        }
+    },
+    "5":
+    {
+        "1":
+        {
+            "_id":"404dd1236a2b702604346287cdad3b05",
+            "_rev":"1-9f2e733f93dd6ee1f64ad55549978019",
+            "Agency":"X","Version":"007020",
+            "SegmentID":"LX",
+            "ElementID":"0554",
+            "Release":"0",
+            "Position":"1",
+            "RequirementDesignator":"M",
+            "Rules":"",
+            "GroupRequirementDesignatorID":"",
+            "SubElementReqDesignator":"M",
+            "GroupReqDesignator":"",
+            "GroupBeginEnd":"",
+            "Type":"N0",
+            "Description":"ASSIGNED NUMBER",
+            "MinimumLength":"1",
+            "MaximumLength":"6",
+            "CodeParts":"0",
+            "CompositeElement":"0",
+            "RepeatFactor":"1",
+            "SegmentPosition":"5"
+        }
+    }
+	 },
+  "segmentText": 
+ 	{
+		"1":"pos1",
+		"2":"pos2",
+		"3":"pos3",
+		"5":"pos5"
+	},
+  "code":
+    {
+    "3":
+    {
+        "1":
+        {
+            "0":
+            {
+                "value":"005",
+                "description":"CONSTRUCTION CONTRACTOR"
+            }
+        }
+    }
+	} 
+}
+elementCode[    segmentUsage[x]['Position'] ]
+           [    elementUsageDefs[   segmentUsage[x]['Position'] ]   [y] ['Position']    ]
+           [    a   ]
+           ['description']
+
+
+localhost:5000/api/elementUsageDefs/getWithCode
+{
+		"agency": "X",
+		"version": "003071",
+		"segmentId": "BEG"
+}
+{
+  "status": true,
+  "message": "found successfully",
+  "data": [
+    {
+      "_id": "5f37833f2541f3067e9cc80f",
+      "GroupReqDesignator": "",
+      "SegmentID": "BEG",
+      "RequirementDesignator": "M",
+      "Rules": "",
+      "Agency": "X",
+      "GroupBeginEnd": "",
+      "Description": "TRANSACTION SET PURPOSE CODE",
+      "RepeatFactor\r": "1\r",
+      "MaximumLength": "2",
+      "Version": "003071",
+      "CodeParts": "",
+      "CompositeElement": "0",
+      "Release": "0",
+      "Position": "1",
+      "SubElementReqDesignator": "M",
+      "Type": "ID",
+      "MinimumLength": "2",
+      "ElementID": "0353",
+      "GroupRequirementDesignatorID": "",
+      "Code": true
+    },
+    {
+      "_id": "5f37833f2541f3067e9cc810",
+      "GroupReqDesignator": "",
+      "SegmentID": "BEG",
+      "RequirementDesignator": "M",
+      "Rules": "",
+      "Agency": "X",
+      "GroupBeginEnd": "",
+      "Description": "PURCHASE ORDER TYPE CODE",
+      "RepeatFactor\r": "1\r",
+      "MaximumLength": "2",
+      "Version": "003071",
+      "CodeParts": "",
+      "CompositeElement": "0",
+      "Release": "0",
+      "Position": "2",
+      "SubElementReqDesignator": "M",
+      "Type": "ID",
+      "MinimumLength": "2",
+      "ElementID": "0092",
+      "GroupRequirementDesignatorID": "",
+      "Code": true
+    },
+    {
+      "_id": "5f37833f2541f3067e9cc811",
+      "GroupReqDesignator": "",
+      "SegmentID": "BEG",
+      "RequirementDesignator": "M",
+      "Rules": "",
+      "Agency": "X",
+      "GroupBeginEnd": "",
+      "Description": "PURCHASE ORDER NUMBER",
+      "RepeatFactor\r": "1\r",
+      "MaximumLength": "22",
+      "Version": "003071",
+      "CodeParts": "",
+      "CompositeElement": "0",
+      "Release": "0",
+      "Position": "3",
+      "SubElementReqDesignator": "M",
+      "Type": "AN",
+      "MinimumLength": "1",
+      "ElementID": "0324",
+      "GroupRequirementDesignatorID": "",
+      "Code": false
+    }
+  ]
+}
+
+
+
+localhost:5000/api/code/get
+{
+		"agency": "X",
+		"version": "003071",
+		"element": "0354"
+}
+{
+  "status": true,
+  "message": "found successfully",
+  "data": [
+    {
+      "Description": "COMPLETION NOTIFICATION",
+      "Value": "CN",
+      "ElementID": "0353"
+    },
+    {
+      "Description": "CORRECTED",
+      "Value": "CO",
+      "ElementID": "0353"
+    },
+    {
+      "Description": "FINAL LOADING CONFIGURATION",
+      "Value": "EX",
+      "ElementID": "0353"
+    }
+  ]
+}

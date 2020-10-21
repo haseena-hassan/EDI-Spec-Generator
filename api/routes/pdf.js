@@ -20,13 +20,19 @@ exports.getPdf = function(req,res){
 	var presentLoop='';
 
 	// params.segmentUsage=params.segmentUsage.substring(1,params.segmentUsage.length-1);
-	console.log(params.segmentUsage);
+	// console.log(params.segmentUsage);
 	
-	var segmentUsage=JSON.parse(params.segmentUsage);
-	var numberOfElementsInSegment=JSON.parse(params.numberOfElementsInSegment);
-	var elementUsageDefs=JSON.parse(params.elementUsageDefs);
-	var segmentText=JSON.parse(params.segmentText);
-	var elementCode=JSON.parse(params.code);
+	// var segmentUsage=JSON.parse(params.segmentUsage);
+	// var numberOfElementsInSegment=JSON.parse(params.numberOfElementsInSegment);
+	// var elementUsageDefs=JSON.parse(params.elementUsageDefs);
+	// var segmentText=JSON.parse(params.segmentText);
+    // var elementCode=JSON.parse(params.code);
+    
+    var segmentUsage=params.segmentUsage;
+	var numberOfElementsInSegment=params.numberOfElementsInSegment;
+	var elementUsageDefs=params.elementUsageDefs;
+	var segmentText=params.segmentText;
+	var elementCode=params.code;
 		
 	var doc=new pdfkit({	
 		size: 'a4',
@@ -43,7 +49,7 @@ exports.getPdf = function(req,res){
 	res.setHeader('Content-Disposition', 'attachment; filename='+fileName);
 	
 
-	filePath=__dirname+'/../EDIFiles/pdf/'+fileName;
+	filePath=__dirname+'/pdf/'+fileName;
 
 	for(x in tempElementCode)
 	{

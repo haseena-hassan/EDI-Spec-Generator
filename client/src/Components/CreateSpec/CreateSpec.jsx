@@ -105,9 +105,16 @@ class App extends React.Component {
             agency : '',
             version : '',
             transactionSet : '',
-            transactionSetDesc : '',
+            transactionDescription : '',
             segments : [],
             elements : [],
+            numberOfHeadingSegments : 0,
+            numberOfDetailSegments : 0,
+            numberOfSummarySegments : '',
+            headingText : '',
+            footerText : '',
+            businessPartnerText : '',
+            segmentUsage : '',
 
             responseVer : [],
             responseTset : [],
@@ -168,9 +175,19 @@ class App extends React.Component {
         })
     }
     handleStatusSeg = (status, segs) => { 
+        var segUsage={}, numH=0, numS=0, numD=0, seg=[]
+        for(var i=0; i<segs.length; i++){
+            segUsage[segs[i]["Position"]] = segs[i]
+            segs[i]["Section"]=='H' ? numH++ : (segs[i]["Section"]=='D' ? numD++ : numS++)
+            seg.push(segs[i]["SegmentID"])
+        }
         this.setState({
             statSeg : status,
-            segments : segs
+            segmentUsage : segUsage,
+            numberOfHeadingSegments : numH,
+            numberOfDetailSegments : numD,
+            numberOfSummarySegments : numS,
+            segments : seg
         }, () => {
             console.log(this.state.segments)
         }) 

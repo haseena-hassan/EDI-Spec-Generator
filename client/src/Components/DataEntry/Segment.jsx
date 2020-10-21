@@ -18,7 +18,7 @@ class Segment extends Component {
             perPage: 5,
             currentPage: 0
         }
-        this.handlePageClick = this.handlePageClick.bind(this);
+        this.handlePageClick = this.handlePageClick.bind(this)
     }
 
     handlePageClick = (e) => {
@@ -27,7 +27,7 @@ class Segment extends Component {
         this.setState({
             currentPage: selectedPage,
             offset: offset
-        });
+        })
     }
 
     handleSelection = (pos) => { 
@@ -98,7 +98,7 @@ class Segment extends Component {
                                         <td>{item.RequirementDesignator}</td>
                                         <td>
                                             <input className="styled-checkbox" type="checkbox" id={item.Position} 
-                                                value={item} onClick={e =>  this.handleSelection(item.Position)}
+                                                value={item} onClick={() =>  this.handleSelection(item.Position)}
                                                 checked={this.state.segment.includes(item)} />
                                             <label for={item.Position}></label>
                                         </td>
