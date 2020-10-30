@@ -41,10 +41,10 @@ app.post('/api/user/logout',api.clearSession);
 // app.post('/api/segmentUsage/getAll',api.getAllSegmentUsage);					//get All SegmentUsage
 
 
-// app.post('/api/elementUsageDefs/get',api.getElementUsageDefs);					//get Element Usage Defs---parameters * agency * version * segmentId
-// app.post('/api/elementUsageDefs/getFromPosition',api.getElementUsageDefsFromPosition);		// get list of ElementUsageDefs with position being the ordering parameter	
-// app.post('/api/elementUsageDefs/getWithCode',api.getElementUsageDefsWithCode);
-// app.post('/api/elementUsageDefs/getMandatoryElementStatus',api.getMandatoryElementStatus);
+app.post('/api/elementUsageDefs/get',api.getElementUsageDefs);					//get Element Usage Defs---parameters * agency * version * segmentId
+app.post('/api/elementUsageDefs/getFromPosition',api.getElementUsageDefsFromPosition);		// get list of ElementUsageDefs with position being the ordering parameter	
+app.post('/api/elementUsageDefs/getWithCode',api.getElementUsageDefsWithCode);
+app.post('/api/elementUsageDefs/getMandatoryElementStatus',api.getMandatoryElementStatus);
 
 // app.post('/api/code/get',api.getCode);												//get Code*
 
