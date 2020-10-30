@@ -20,9 +20,9 @@ const api = require('./api/index')
 app.use('/',api);
 
 
-// app.post('/api/user/authenticate',api.authenticate);
-// app.post('/api/user/session',api.getSession);
-// app.post('/api/user/logout',api.clearSession);
+app.post('/api/user/authenticate',api.authenticate);
+app.post('/api/user/session',api.getSession);
+app.post('/api/user/logout',api.clearSession);
 
 
 // app.post('/api/agency/get',api.getAgency); 										//get Agency----parameters * agency
