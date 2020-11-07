@@ -14,7 +14,6 @@ import axios from 'axios'
 
 
 
-
 class Element extends Component {
     constructor(props){
         super(props)
@@ -25,6 +24,8 @@ class Element extends Component {
 
             currSegment : '',
             currElements : [],
+            currElementSelection : {},
+            currElementSelectionSet : [],       //on save, empty
             elements : {},
 
             offset: 0,
@@ -53,36 +54,35 @@ class Element extends Component {
     // } 
 
     handleSelection = (eleID) => { 
-        const data = this.props.data
-        const ind = data.findIndex(el => (el.Position == eleID))
-        const item = data[ind]
-        const currElements = [...this.state.currElements]
-        if(currElements.includes(item)){
-            currElements.splice(elements.indexOf(item), 1)
+        // const data = this.props.data
+        // const ind = data.findIndex(el => (el.Position == eleID))
+        // const item = data[ind]
+        const currElementSelectionSet = [...this.state.currElementSelectionSet]
+        if(currElementSelectionSet.includes(eleID)){
+            currElementSelectionSet.splice(currElementSelectionSet.indexOf(eleID), 1)
         } else{
-            elements.push(item) 
+            currElementSelectionSet.push(eleID) 
         }
-        this.setState({ elements }) 
-        console.log(elements)
+        this.setState({ currElementSelectionSet }) 
+        console.log(currElementSelectionSet)
     }
 
     recieveData = (agency, version, segId) => {
-        axios.post('/api/elementUsageDefs/get', {
+        axios.post('/api/elementUsageDefs/getWithCode', {
             agency : agency,
             version : version,
             segmentId : segId
         })
         .then((res) => {
-            const elements = {...this.state.elements}
-            elements[segId] = res.data.data
+            const currElements = res.data.data
             this.setState({
                 currSegment : segId,
                 currElemLen : res.data.data.length,
-                elements
+                currElements : currElements
             })
             console.log(segId)
             console.log(res.data.data)
-            console.log(elements)
+            console.log(currElements)
         }, (error) => {
             console.log(error)
         }) 
@@ -108,7 +108,7 @@ class Element extends Component {
                         nextLabel={"next"}
                         breakLabel={"..."}
                         breakClassName={"break-me"}
-                        pageCount={Math.ceil(this.props.segments.length / this.state.perPage)}
+                        pageCount={Math.ceil(this.state.currElements.length / this.state.perPage)}
                         marginPagesDisplayed={2}
                         pageRangeDisplayed={5}
                         onPageChange={this.handlePageClick}
@@ -129,9 +129,9 @@ class Element extends Component {
                             <Col lg="2">
                                 <Nav variant="pills" className="flex-column">
                                     {this.props.segments.map(segment =>
-                                        <Nav.Item>
-                                            <Nav.Link eventKey={segment.SegmentID}
-                                                onClick={()=> this.recieveData(this.props.agency, this.props.version, segment.SegmentID)}>{segment.SegmentID}</Nav.Link>
+                                        <Nav.Item style={{cursor:"pointer"}}>
+                                            <Nav.Link eventKey={segment}
+                                                onClick={()=> this.recieveData(this.props.agency, this.props.version, segment)}>{segment}</Nav.Link>
                                         </Nav.Item>
                                     )}
                                 </Nav>
@@ -139,7 +139,7 @@ class Element extends Component {
                             <Col sm={10}>
                                 <Tab.Content>
                                     {this.props.segments.map(segment => 
-                                        <Tab.Pane eventKey={segment.SegmentID}>
+                                        <Tab.Pane eventKey={segment}>
                                             <Table bordered  hover>
                                                 <thead>
                                                     <tr>
@@ -153,7 +153,7 @@ class Element extends Component {
                                                     </tr>
                                                 </thead>
                                                 <tbody style={{cursor:"pointer"}}>
-                                                    {slice.map(item => 
+                                                    {this.state.currElements.slice(this.state.offset, this.state.offset + this.state.perPage).map(item => 
                                                         <tr>
                                                             <td>{item.Position}</td>
                                                             <td>{item.ElementID}</td>
@@ -167,7 +167,7 @@ class Element extends Component {
                                                                 <input className="styled-checkbox" value={item}   
                                                                 type="checkbox" id={item.ElementID} 
                                                                 onClick={()=>this.handleSelection(item.ElementID)}
-                                                                checked={this.state.elements.includes(item)} />
+                                                                checked={this.state.currElementSelectionSet.includes(item)} />
                                                                 <label for={item.ElementID}></label>
                                                             </td>
                                                         </tr>

@@ -5,7 +5,7 @@ import PublicRoute from "./Route/Publicroute";
 import Topnav from './Components/Layout/Topnav'
 import Dashboard from './Components/Dashboard/Dashboard'
 import CreateSpec from './Components/CreateSpec/CreateSpec'
-import CreateEDI from './Components/CreateEDI/CreateEDI'
+import CreateFile from './Components/CreateFile/CreateFile'
 import Search from './Components/Search/Search'
 import Reports from './Components/Reports/Reports'
 import LoginSession from './Components/LoginSession/LoginSession'
@@ -22,7 +22,7 @@ class App extends React.Component {
           <Topnav/>
           <PublicRoute exact path="/" component={Dashboard} />
           <PublicRoute path="/create-spec" component={CreateSpec} />
-          <PublicRoute path="/create-edi" component={CreateEDI} />
+          <PublicRoute path="/create-file" component={CreateFile} />
           <PublicRoute path="/search" component={Search} />
           <PublicRoute path="/reports" component={Reports} />
           <PublicRoute path="/login" component={LoginSession} />
